@@ -1,0 +1,27 @@
+
+<div class="flex flex-col h-screen bg-gray-100 ">
+  <header class="flex items-center justify-between px-6 py-4 bg-white  shadow-md">
+    <div class="flex items-center space-x-2">
+      <svg
+        width="24" height="24" viewBox="0 0 24 24"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="w-8 h-8 text-green-500"
+      >
+        <line x1="12" x2="12" y1="2" y2="22"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+      </svg>
+      <a href="/">
+        <h1 class="text-2xl font-semibold text-zinc-900 ">poupa.online</h1>
+      </a>
+    </div>
+
+  </header>
+  <main class="flex-1 flex justify-center overflow-y-auto p-6 bg-gray-200 ">
+    <div class="max-w-[800px] w-full">
+      <ng-content></ng-content>
+      <footer class="w-full p-4 flex flex-col justify-center items-center text-sm italic ">
+        <span>&copy;AlphaTech | Leandro Santino</span>
+      </footer>
+    </div>
+  </main>
+</div>
+

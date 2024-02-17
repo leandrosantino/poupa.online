@@ -1,0 +1,20 @@
+{
+	"message": null,
+	"data": {
+		"id": 1316817816,
+		"qrCode": "",
+		"qrCodeBase64": "",
+		"status": "PROCESSING",
+		"currencyId": "BRL",
+		"description": "Janeiro 1/12",
+		"dateOfExpiration": [
+			2024,
+			1,
+			30,
+			20,
+			28,
+			24,
+			786000000
+		]
+	}
+}

@@ -1,0 +1,55 @@
+<section class="mb-8">
+  <h2 class="text-xl font-semibold mb-4">Realizar Pagamento</h2>
+  <div
+    class="flex flex-col items-center justify-center"
+    *ngIf="makePaymentData; else loading"
+  >
+    <div class="mb-4 w-full flex flex-col items-center justify-center gap-1">
+      <p class="text-center text-zinc-600 "> Válido até: </p>
+      <p class="font-bold text-zinc-900">{{getDateOfExpiration()}}</p>
+    </div>
+    <div class="w-64 h-64 bg-white rounded-lg flex items-center justify-center">
+      <img
+        alt="QR Code"
+        class="w-[98%] h-[98%]"
+        width="256"
+        height="256"
+
+        src="data: image/jpeg;base64,{{makePaymentData.qrCodeBase64}}"
+      />
+    </div>
+    <p class="mt-4 text-center text-zinc-900 font-semibold text-xl">
+      {{makePaymentData.description}}
+    </p>
+    <p class="mt-4 text-center text-zinc-600 ">
+      Escaneie o QR Code acima para realizar o pagamento
+    </p>
+    <div class="mt-4 w-full">
+      <div class="flex gap-2 bg-white rounded-md p-1">
+        <input
+          id="pixCodeInput"
+          class="flex h-10 bg-transparent px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full text-center cursor-pointer"
+          readonly=""
+          value="{{makePaymentData.qrCode}}"
+        />
+        <button class="bg-transparent px-2 hover:bg-zinc-100 rounded-md" (click)="copyToClipBoard()">
+          <lucide-icon size="20" name="{{copyIconName}}"></lucide-icon>
+        </button>
+      </div>
+      <p class="mt-2 text-center text-zinc-600 ">Ou copie o código acima</p>
+    </div>
+    <div class="mt-4 w-full">
+      <!-- <p class="text-center text-zinc-600 ">
+        Status do Pagamento: <span class="font-bold text-zinc-900">{{makePaymentData.status}}</span>
+      </p> -->
+    </div>
+    <a href="/newpayment" class="mt-4 w-4/5">
+      <app-button class="w-full">Continuar</app-button>
+    </a>
+  </div>
+  <ng-template #loading>
+    <div class="flex flex-col items-center justify-center h-full">
+      <span class="animate-spin w-10 h-10 border-2 border-b-0 border-zinc-900 rounded-full" ></span>
+    </div>
+  </ng-template>
+</section>

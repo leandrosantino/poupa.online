@@ -1,0 +1,44 @@
+<h2 class="text-xl font-semibold mb-4">Buscar Pagamentos</h2>
+
+<form 
+  class="mb-4 grid grid-cols-[1fr_100px] gap-2 max-sm:grid-cols-1"
+  (ngSubmit)="submit()" [formGroup]="paymentsSearchForm" #formDir="ngForm"
+>
+
+  <div class="flex flex-col">
+    <input
+      class="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full"
+      placeholder="Digite o CPF aqui"
+      required
+      formControlName="userCpf"
+      (change)="formatCpf()"
+    />
+    <div 
+      class="px-2 py-1 text-red-600 text-sm"
+      *ngIf="userCpf.invalid && formDir.submitted"
+    >
+      <span *ngIf="userCpf.errors?.['required'] && formDir.submitted" >Informe seu cpf para continuar!</span>
+      <span *ngIf="userCpf.errors?.['pattern'] && formDir.submitted" >Formato do CPF inválido!</span>
+    </div>
+  </div>
+
+  <app-button>Buscar</app-button>    
+
+</form>
+
+<section *ngIf="userData && formDir.submitted" >
+  <div class="flex w-full items-center mb-4 gap-2" >
+    <h2 class="text-xl font-semibold">Pagamentos</h2>
+    <span class="text-xl" > - {{userData.name}}</span>
+  </div>
+  <payments-table [payments$]="payments$"></payments-table>
+</section>
+
+
+
+<div
+  class="flex w-full justify-center items-center mb-4 gap-2" 
+  *ngIf="userRequestIsError"
+>
+  <span class="text-xl font-semibold" >Usuário não encontrado!</span>
+</div>

@@ -1,0 +1,31 @@
+<div class="rounded-lg border bg-zinc-100 text-card-foreground shadow-sm" data-v0-t="card">
+  <div class="px-2 py-4 [&>*:last-child]:border-none" *ngIf="payments$ | async; else loading">
+    
+    <div 
+      class="cursor-pointer px-2 border-b border-zinc-300 hover:bg-zinc-200 data-[status=COMPLETED]:hover:bg-transparent"
+      *ngFor="let payment of payments$ | async"
+      (click)="goToPaymentPage(payment.id, payment.status)"
+      [attr.data-status]="payment.status"
+    >
+      <div class="item grid grid-cols-4 py-2">
+        <span class="font-medium w-full flex h-full items-center justify-start max-sm:text-sm"> {{formatDate(payment.payedAt)}} </span>
+        <span class="font-medium w-full flex h-full items-center justify-center text-center max-sm:text-sm"> {{payment.description}} </span>
+        <span 
+          class="text-sm flex h-full items-center justify-center text-gray-500 w-full data-[status=COMPLETED]:font-medium data-[status=COMPLETED]:text-green-500"
+          [attr.data-status]="payment.status"
+        > 
+          {{formatStatus(payment.status)}} 
+        </span>
+        <span class="text-gray-500 w-full flex h-full items-center justify-end"> {{formatPaymentValue(payment.paymentValueInCents)}} </span>
+      </div>
+    </div>
+    
+  </div>
+
+  <ng-template #loading>
+    <div class="flex flex-col items-center justify-center h-full p-4">
+      <span class="animate-spin w-5 h-5 border-2 border-b-0 border-zinc-900 rounded-full" ></span>
+    </div>
+  </ng-template>
+  
+</div>

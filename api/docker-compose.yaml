@@ -1,0 +1,25 @@
+version: "3"
+
+networks:
+  appnet:
+    driver: bridge
+
+services:
+  database:
+    container_name: database2
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "admin123"
+      POSTGRES_USER: "leandro"
+      POSTGRES_DB: "poupaOnline"
+    networks:
+      - appnet
+    ports:
+      - 5432:5432
+  application:
+    container_name: application
+    build: .
+    networks:
+      - appnet
+    ports:
+      - 8080:8080
