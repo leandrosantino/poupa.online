@@ -42,13 +42,13 @@
 
 Este projeto foi um grande desafio que me permitiu explorar diversas tecnologias:
 
-✅ Integração com APIs de pagamento
-✅ Arquitetura de microsserviços com Docker
-✅ Configuração de proxy reverso com Nginx
-✅ Deploy em cloud AWS
-✅ Desenvolvimento Full Stack (Angular + Spring Boot)
-✅ Boas práticas de segurança em transações financeiras
-✅ Gerenciamento de containers e orquestração
+- ✅ Integração com APIs de pagamento
+- ✅ Arquitetura de microsserviços com Docker
+- ✅ Configuração de proxy reverso com Nginx
+- ✅ Deploy em cloud AWS
+- ✅ Desenvolvimento Full Stack (Angular + Spring Boot)
+- ✅ Boas práticas de segurança em transações financeiras
+- ✅ Gerenciamento de containers e orquestração
 
 
 ## 📦 Como Executar o Projeto
